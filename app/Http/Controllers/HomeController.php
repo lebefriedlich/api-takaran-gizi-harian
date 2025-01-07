@@ -15,7 +15,6 @@ class HomeController extends Controller
 
     public function find(Request $request)
     {
-        // Definisikan aturan validasi
         $rules = [
             'usia' => 'required|numeric',
             'tahunOrBulan' => 'required|string|in:bulan,tahun',
@@ -85,7 +84,10 @@ class HomeController extends Controller
             ];
         }
 
-        return response()->json($responseData);
+        return response()->json([
+            'status' => 'success',
+            'data' => $responseData
+        ], 200);
     }
 
 
